@@ -9,13 +9,17 @@ class App extends Component {
     };
   }
 
+  currentTime() {
+    this.setState({ time: new Date() });
+  }
+
   componentDidMount() {
-    this.update = setInterval(() => {
-      this.setState = { time: new Date() };
-    }, 1 * 1000);
+    this.update = setInterval(() => this.currentTime(), 1000);
   }
 
   componentWillUnmount() {
+    // let clearSetInterval = setInterval(this.update, 1000);
+    // clearInterval(clearSetInterval);
     clearInterval(this.update);
   }
 
